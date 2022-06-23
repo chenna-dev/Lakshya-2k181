@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="shortcut icon" href="Images/favicon.ico">
+        
+        <link rel="stylesheet" type="text/css" href="CSS/demo.css" />
+        <link rel="stylesheet" type="text/css" href="CSS/style_common.css" />
+        <link rel="stylesheet" type="text/css" href="CSS/style1.css" />
+
+<title>Home</title>
+
+<!--Patrons images-->
+<style>
+
+
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 2.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+
+
+
+
+img {
+    border-radius: 10px;
+}
+</style>
+
+<!--mouse move code-->
+<style type="text/css">
+
+/* Circle Text Styles */
+
+#outerCircleText {
+
+/* Optional - DO NOT SET FONT-SIZE HERE, SET IT IN THE SCRIPT */
+
+font-style: italic;
+
+font-weight: bold;
+
+font-family: 'comic sans ms', verdana, arial;
+
+color: #1ac6ff;
+
+/* End Optional */
+
+
+
+/* Start Required - Do Not Edit */
+
+position: absolute;top: 0;left: 0;z-index: 3000;cursor: default;}
+
+#outerCircleText div {position: relative;}
+
+#outerCircleText div div {position: absolute;top: 0;left: 0;text-align: center;}
+
+/* End Required */
+
+/* End Circle Text Styles */
+
+</style>
+
+<script type="text/javascript">
+
+
+
+/* Circling text trail- Tim Tilton
+
+   Website: http://www.tempermedia.com/
+
+   Visit: http://www.dynamicdrive.com/ for Original Source and tons of scripts
+
+   Modified Here for more flexibility and modern browser support
+
+   Modifications as first seen in http://www.dynamicdrive.com/forums/
+
+   username:jscheuer1 - This notice must remain for legal use
+
+   */
+
+
+
+;(function(){
+
+
+
+// Your message here (QUOTED STRING)
+
+var msg = "L A K S H Y A - 2 K 1 8";
+
+
+
+/* THE REST OF THE EDITABLE VALUES BELOW ARE ALL UNQUOTED NUMBERS */
+
+
+
+// Set font's style size for calculating dimensions
+
+// Set to number of desired pixels font size (decimal and negative numbers not allowed)
+
+var size = 24;
+
+
+
+// Set both to 1 for plain circle, set one of them to 2 for oval
+
+// Other numbers & decimals can have interesting effects, keep these low (0 to 3)
+
+var circleY = 0.75; var circleX = 2;
+
+
+
+// The larger this divisor, the smaller the spaces between letters
+
+// (decimals allowed, not negative numbers)
+
+var letter_spacing = 5;
+
+
+
+// The larger this multiplier, the bigger the circle/oval
+
+// (decimals allowed, not negative numbers, some rounding is applied)
+
+var diameter = 10;
+
+
+
+// Rotation speed, set it negative if you want it to spin clockwise (decimals allowed)
+
+var rotation = 0.4;
+
+
+
+// This is not the rotation speed, its the reaction speed, keep low!
+
+// Set this to 1 or a decimal less than one (decimals allowed, not negative numbers)
+
+var speed = 0.3;
+
+
+
+////////////////////// Stop Editing //////////////////////
+
+
+
+if (!window.addEventListener && !window.attachEvent || !document.createElement) return;
+
+
+
+msg = msg.split('');
+
+var n = msg.length - 1, a = Math.round(size * diameter * 0.208333), currStep = 20,
+
+ymouse = a * circleY + 20, xmouse = a * circleX + 20, y = [], x = [], Y = [], X = [],
+
+o = document.createElement('div'), oi = document.createElement('div'),
+
+b = document.compatMode && document.compatMode != "BackCompat"? document.documentElement : document.body,
+
+
+
+mouse = function(e){
+
+ e = e || window.event;
+
+ ymouse = !isNaN(e.pageY)? e.pageY : e.clientY; // y-position
+
+ xmouse = !isNaN(e.pageX)? e.pageX : e.clientX; // x-position
+
+},
+
+
+
+makecircle = function(){ // rotation/positioning
+
+ if(init.nopy){
+
+  o.style.top = (b || document.body).scrollTop + 'px';
+
+  o.style.left = (b || document.body).scrollLeft + 'px';
+
+ };
+
+ currStep -= rotation;
+
+ for (var d, i = n; i > -1; --i){ // makes the circle
+
+  d = document.getElementById('iemsg' + i).style;
+
+  d.top = Math.round(y[i] + a * Math.sin((currStep + i) / letter_spacing) * circleY - 15) + 'px';
+
+  d.left = Math.round(x[i] + a * Math.cos((currStep + i) / letter_spacing) * circleX) + 'px';
+
+ };
+
+},
+
+
+
+drag = function(){ // makes the resistance
+
+ y[0] = Y[0] += (ymouse - Y[0]) * speed;
+
+ x[0] = X[0] += (xmouse - 20 - X[0]) * speed;
+
+ for (var i = n; i > 0; --i){
+
+  y[i] = Y[i] += (y[i-1] - Y[i]) * speed;
+
+  x[i] = X[i] += (x[i-1] - X[i]) * speed;
+
+ };
+
+ makecircle();
+
+},
+
+
+
+init = function(){ // appends message divs, & sets initial values for positioning arrays
+
+ if(!isNaN(window.pageYOffset)){
+
+  ymouse += window.pageYOffset;
+
+  xmouse += window.pageXOffset;
+
+ } else init.nopy = true;
+
+ for (var d, i = n; i > -1; --i){
+
+  d = document.createElement('div'); d.id = 'iemsg' + i;
+
+  d.style.height = d.style.width = a + 'px';
+
+  d.appendChild(document.createTextNode(msg[i]));
+
+  oi.appendChild(d); y[i] = x[i] = Y[i] = X[i] = 0;
+
+ };
+
+ o.appendChild(oi); document.body.appendChild(o);
+
+ setInterval(drag, 25);
+
+},
+
+
+
+ascroll = function(){
+
+ ymouse += window.pageYOffset;
+
+ xmouse += window.pageXOffset;
+
+ window.removeEventListener('scroll', ascroll, false);
+
+};
+
+
+
+o.id = 'outerCircleText'; o.style.fontSize = size + 'px';
+
+
+
+if (window.addEventListener){
+
+ window.addEventListener('load', init, false);
+
+ document.addEventListener('mouseover', mouse, false);
+
+ document.addEventListener('mousemove', mouse, false);
+
+  if (/Apple/.test(navigator.vendor))
+
+   window.addEventListener('scroll', ascroll, false);
+
+}
+
+else if (window.attachEvent){
+
+ window.attachEvent('onload', init);
+
+ document.attachEvent('onmousemove', mouse);
+
+};
+
+
+
+})();
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+.mySlides {
+display:none;
+margin:0px;
+}
+</style>
+
+
+
+<link rel="shortcut icon" href="Images/favicon.ico">
+	 <link rel="stylesheet" href="CSS/font.css">
+	 <link rel="stylesheet" href="CSS/Button.css">
+	 <link rel="stylesheet" href="CSS/Button1.css">
+	<link rel="stylesheet" href="CSS/bootstrap.min.css">
+	<link rel="stylesheet" href="CSS/font-awesome.min.css">
+	<link rel="stylesheet" href="CSS/templatemo_misc.css">
+	<link rel="stylesheet" href="CSS/templatemo_style.css">
+	<link rel="stylesheet" href="CSS/templatemo_style1.css">
+<link rel="stylesheet" type="text/css" href="CSS/style47.css"/>
+    <link rel="stylesheet" href="CSS/ihover.css">
+    <link rel="stylesheet" href="CSS/CircularCss.css">
+    <link rel="stylesheet" href="CSS/demo.css" />
+    <link rel="stylesheet" href="CSS/style_common.css" />
+    <link rel="stylesheet" href="CSS/style1.css" />
+     <link rel="stylesheet" href="CSS/style.css" />
+    <link href="CSS/font.css" rel="stylesheet" type="text/css" />
+		<link href="CSS/hover.css" rel="stylesheet">    
+
+<script type="text/javascript" src="JS/modernizr.custom.69142.js">
+		
+
+</script> 
+   <script type="text/javascript" src="crawler.js">
+   <script type="text/javascript">
+    function chbi(image) 
+    {
+        
+  document.getElementById('circle1').style.background= 'url(Images/Circle/After/'+image+'.jpg) no-repeat center';
+   /* document.getElementById('circle1').style.backgroundImage = url('color');
+   */
+}
+</script>
+
+</head>
+<body>
+	
+	 
+    <div class="responsive-navigation visible-sm visible-xs">
+        <a href="index.html" class="menu-toggle-btn">
+            <i class="fa fa-bars fa-2x"></i>
+        </a>
+        <div class="navigation responsive-menu">
+           	<ul class="main-menu">
+	           <b> <li class="home"><a href="#home">Home</a></li>
+	            <li class="lakshya"><a href="#lakshya">Lakshya</a></li>
+	            <li class="events"><a href="#events">Events</a></li>
+	            <li class="patron"><a href="#patron">Patrons</a></li>
+		    <li class="Sponsors"><a href="#Sponsors">Sponsors</a></li>
+    		    <li class="events"><a href="#Reg">Registration</a></li>
+	            <li class="lakshya"><a href="#DT">Design Team</a></li> </b>
+			
+				<li class="contact"><a href="#contact">Contact Us</a></li>
+	        </ul><!-- /.main_menu -->
+        </div> <!-- /.responsive_menu -->
+    </div> <!-- /responsive_navigation -->
+
+	<div id="main-sidebar" class="hidden-xs hidden-sm">
+		<div class="logo">
+			<a href="index.html"><h1>Lakshya 2K18</h1></a>
+			<span>&ensp;&ensp;&ensp;13<sup>th</sup> National Level Symposium</span>
+		</div> <!-- /.logo -->
+
+		<div class="navigation">
+	    	 <ul class="main-menu">
+	            <li class="home"><a href="#home">Home</a></li>
+	            <li class="lakshya"><a href="#lakshya">Lakshya</a></li>
+	            <li class="events"><a href="#events">Events</a></li>
+	            <li class="patron"><a href="#patron">Patrons</a></li>
+		    <li class="Sponsors"><a href="#Sponsors">Sponsors</a></li>
+                    <li class="gallery"><a href="#gallery">Gallery</a></li>
+   		    <li class="lakshya"><a href="#DT">Design Team</a></li>
+				<li class="contact"><a href="#contact">Find Us</a></li>
+	        </ul>
+		</div> <!-- /.navigation -->
+
+	</div> <!-- /#main-sidebar -->
+
+<div id="main-content">
+<div id="home" class="section-content">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="section-title">
+				
+<h2>Home</h2><br><br>
+<table align="center">
+            <tr>
+          <td width="219"><a href="DEP/ASE.html"> <img src="Images/DEP/ASE.jpg"  alt="ASE" width="200" height="150"/> 
+            <h3 align="center">ASE</h3></a></td>
+          <td width="222"><a href="DEP/CIVIL.html"><img src="Images/DEP/CIVIL.jpg"  alt="CE" width="200" height="150"/>
+            <h3 align="center">CIVIL</h3></a></td>
+          <td width="214"><a href="DEP/CSE.html"> <img src="Images/DEP/CSE.jpg"  alt="CSE" width="200" height="150"/>
+            <h3 align="center">CSE</h3></a></td>
+            </tr>
+
+             <tr>
+          <td><a href="DEP/ECE.html"> <img src="Images/DEP/ECE.jpg"  alt="ECE" width="200" height="150"/><h3 align="center">ECE</h3></a></td>
+        <td><a href="DEP/EEE.html"><img src="Images/DEP/EEE.jpg"  alt="EEE" width="200" height="150"/><h3 align="center">EEE</h3></a></td>
+          <td><a href="DEP/EIE.html"> <img src="Images/DEP/EIE.jpg"  alt="EIE" width="200" height="150"/><h3 align="center">EIE</h3></a></td>
+            </tr>
+
+            <tr>
+          <td><a href="DEP/IT.html"> <img src="Images/DEP/IT.png"  alt="IT" width="200" height="150"/><h3 align="center">IT</h3></a></td>
+          <td><a href="DEP/MECH.html"><img src="Images/DEP/M.jpg"  alt="MECH" width="200" height="150"/><h3 align="center">MECH</h3></a></td>
+          <td><a href="DEP/MBA.html"> <img src="Images/DEP/MBA.jpg"  alt="MBA" width="200" height="150"/><h3 align="center">MBA</h3></a></td>
+            </tr>
+
+           <tr>
+<td></td>
+<td><a href="DEP/MCA.html"> <img src="Images/DEP/MCA.jpg"  alt="MCA" width="200" height="150"/><h3 align="center">MCA</h3></a></td>
+<td></td>
+</tr>
+</table>
+		</div> <!-- /.section-title -->
+					</div> <!-- /.col-md-12 -->
+				</div> <!-- /.row -->	 	 
+			 
+</div> <!-- /#patron -->
+
+
+
+
+
+			<div class="container-fluid">
+
+
+<div id="lakshya" class="section-content">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="section-title">
+							<h2>Lakshya</h2>
+<br>
+<br>
+                               <p class="b">Tonnes of knowledge, lots of interactions, loads of fun, heaps of happiness.Who would forsake a day of Euphoria? In the midst of all the hectic academic schedule, days like Lakshya can never be forsaken. LAKSHYA is a national level technical symposium, annually organised by Lakireddy BaliReddy College of Engineering.  Lakshya is a perfect conglomeration where expertise, passion, innovation, fun go hand in hand . 
+With events like Srujana (Paper Presentation), Pragna (Poster Presentation), Nipuna (Project Expo), Medha(Technical Quiz), Lakshya can be regarded as an Arena to showcase thousands  of talents. Besides these, Art Expo, Central events and jillions of Spot events are blended together along with the Cultural Events that would satisfy the participantís  quest for knowledge and drench them with waves of excitement and fun. Anyone with sheer enthusiasm is appreciated to participate and get a handful of insights, exposure that would cater to their development.</p>
+<br>
+<br>
+<h3>Download Links:</h3>
+<table align="center" cellpadding="0" cellspacing="0" width="auto" height="auto">
+<tr>
+ <td><a href="Files/B.pdf" target="_blank"><button id="B">Brochure</button></a></td>
+ <td><a href="Files/P.jpg" target="_blank"><button id="B">Poster</button></a></td>
+
+<td><a href="Files/I.pdf" target="_blank"><button id="B">Invitation</button></a></td>
+</tr>
+</table>
+<br>
+<br>
+
+						</div> <!-- /.section-title -->
+					</div> <!-- /.col-md-12 -->
+				</div> <!-- /.row -->	 	 
+			 
+</div> <!-- /#patron -->
+
+
+
+
+ 
+<div id="events" class="section-content">
+				<div class="row">
+					
+						<div class="section-title">
+							<h2>Events</h2>
+<table>
+
+
+<tr>
+<td width="332" height="242"><a href="Events/Technical.html" target="_self"><img src="Events/Images/EP/TE.jpg" alt="Technical Events" border="1" style="border:#993333"></a></td>
+<td width="363"><a href="Events/Special.html" target="_self"><img src="Events/Images/EP/SE.jpg" alt="Special Events" /></a></td>
+</tr>
+<!--<tr>
+<td colspan="2" align="center"><a href="Events/Samskriti.html" target="_self"><img src="Events/Images/EP/SM1.jpg" alt="Special Events" /></a></td>
+</tr>-->
+</table>
+						</div> <!-- /.section-title -->
+					</div> <!-- /.col-md-12 -->
+				</div> <!-- /.row -->	 	 
+			 
+</div> <!-- /#patron -->
+
+ 
+
+
+
+<div id="patron" class="section-content">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="section-title">
+							<h2>Patrons</h2>
+
+<br>
+<table align="left">
+<tr><th align="left" colspan="3"><h1 class="a">CHIEF PATRONS</h1></th></tr>
+<tr><td>
+<img src="Images\C.jpg" alt="Paris" width="200" height="200">
+<br>
+Sri Lakireddy Bali Reddy,<br><b>Founder ,Chairman,LBRCE</b></td><td></td><td><img src="Images\CO.jpg" alt="Paris" width="200" height="200">
+<br>
+Sri Lakireddy Jayaprakash Reddy,<br><b>Co-Chairman ,LBRCE</b></td><td></td><td><img src="Images\VC.jpg" alt="Paris" width="200" height="200">
+<br>
+Sri Lakireddy R.N.K.Prasad Reddy,<br><b>Vice-Chairman ,LBRCE</b></td></tr>
+</table>
+
+
+
+
+
+<table align="center">
+<tr><th align="left" colspan="4"><h1 class="a">PATRONS</h1></th></tr>
+<tr><td>
+<img src="Images\PR.jpg" alt="Paris" width="200" height="200">
+<br>
+Sri G. Srinivasa Reddy, <br><b>President, LBRCE</b></td><td></td><td><img src="Images\T1.jpg" alt="Paris" width="200" height="200">
+<br>
+Sri K.Timma Reddy,<br><b>Director(Infra) ,LBRCE</b></td><td></td><td><img src="Images\P.jpg" alt="Paris" width="200" height="200">
+<br>
+Dr.K.Appa Rao, <br><b>Principal,LBRCE</b></td><td><img src="Images\VCP.png" alt="Paris" width="200" height="200">
+<br>
+Dr.K.Srinivasa Reddy,<br><b>Vice-Principal, LBRCE</b></td></tr>
+</table>
+
+
+
+<table align="left">
+<tr><th align="left" colspan="2"><h1 class="a">CONVENERS</h1></th></tr>
+<tr><td>
+<img src="Images\PICHI.jpg" alt="Paris" width="200" height="200">
+<br>
+Dr.S.Pichi Reddy,<br><b>HOD, MECH</b></td><td></td><td><img src="Images\AS.jpg" alt="Paris" width="200" height="200">
+<br>
+Dr.P.Ashok Reddy,<br><b>HOD, MCA</b></td><td></td></tr>
+</table>
+
+
+
+
+
+			</div> <!-- /.section-title -->
+					</div> <!-- /.col-md-12 -->
+				</div> <!-- /.row -->	 	 
+			 
+</div> <!-- /#patron -->
+<div id="Sponsors" class="section-content">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="section-title">
+							<h2>Sponsors</h2><br><br>
+							
+							
+<script type="text/javascript">
+marqueeInit({
+	uniqueid: 'mycrawler',
+	style: {
+		'padding': '5px',
+		'width': '874px',
+		'background': 'white',
+		'border': '1px solid #6699cc'
+	},
+	inc: 5, //speed - pixel increment for each iteration of this marquee's movement
+	mouse: 'cursor driven', //mouseover behavior ('pause' 'cursor driven' or false)
+	moveatleast: 2,
+	neutral: 150,
+	persist: true,
+	savedirection: true
+});
+</script>
+
+
+
+<div class="marquee" id="mycrawler2">
+<a href="http://www.iesgateonlinetest.com" target="_blank"><img src="Images/1.jpg" width="208" height="287" border="1" style="border-color:#990000"></a> &nbsp;&nbsp; &nbsp;&nbsp;††<a href="http://pvpsquare.com/category/food-bewerages/" target="_blank"><img src="Images/4.png" alt=" "width="208" height="287"></a> &nbsp;&nbsp; &nbsp;&nbsp;
+		  <a href="http://www.texasreview.in" target="_blank"><img src="Images/2.jpg" alt="" width="208" height="287"></a> &nbsp;&nbsp; <a href="Events/lakshmi.html" target="_blank"><img src="Images/3.png" alt=" " width="208" height="287"></a> &nbsp;&nbsp; &nbsp;&nbsp;
+		  <a href="http://pvpsquare.com/category/food-bewerages/" target="_blank"><img src="Images/5.jpg" alt=" " width="208" height="287"></a> &nbsp;&nbsp; &nbsp;&nbsp;<a href="Events/icecream.html" target="_blank"><img src="Images/6.png" alt=" " width="208" height="287"></a></div>
+
+<!--<script type="text/javascript">
+marqueeInit({
+	uniqueid: 'mycrawler2',
+	style: {
+		'padding': '2px',
+		'width': '600px',
+		'height': '180px'
+	},
+	inc: 5, //speed - pixel increment for each iteration of this marquee's movement
+	mouse: 'cursor driven', //mouseover behavior ('pause' 'cursor driven' or false)
+	moveatleast: 2,
+	neutral: 150,
+	savedirection: true,
+	random: true
+});
+</script>
+		 --> 
+
+							
+							
+<div style="border:1px solid red;">
+<table cellspacing="2" cellpadding="1">
+
+</table>
+
+</div>
+</div> <!-- /.section-title -->
+					</div> <!-- /.col-md-12 -->
+				</div> <!-- /.row -->	  
+			 
+</div> <!-- /#patron -->
+
+<br>
+<br>
+
+
+
+
+
+
+
+<div id="gallery" class="section-content">
+<div class="row">
+					<div class="col-md-12">
+						<div class="section-title">
+				<h2>Gallery</h2><br><br>
+
+
+
+
+
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 10</div>
+  <img src="Images\A1.jpg" style="width:100%; height:400px">
+  
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 10</div>
+  <img src="Images\A2.JPG" style="width:100%; height:400px">
+ </div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 10</div>
+  <img src="Images\A3.JPG" style="width:100%; height:400px">
+  
+</div>
+<div class="mySlides fade">
+  <div class="numbertext">4 / 10</div>
+  <img src="Images\A4.JPG" style="width:100%; height:400px">
+  
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">5/ 10</div>
+  <img src="Images\A5.gif" style="width:100%; height:400px">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">6 / 10</div>
+  <img src="Images\A6.JPG" style="width:100%; height:400px">
+</div>
+<div class="mySlides fade">
+  <div class="numbertext">7 / 10</div>
+  <img src="Images\A7.JPG" style="width:100%; height:400px">
+</div><div class="mySlides fade">
+  <div class="numbertext">8 / 10</div>
+  <img src="Images\A8.JPG" style="width:100%; height:400px">
+</div><div class="mySlides fade">
+  <div class="numbertext">9 / 10</div>
+  <img src="Images\A9.JPG" style="width:100%; height:400px">
+</div><div class="mySlides fade">
+  <div class="numbertext">10 / 10</div>
+  <img src="Images\A10.JPG" style="width:100%; height:400px">
+</div>
+
+
+
+
+
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<h2>Gallery</h2>
+
+
+<div  style="max-width:500px" >
+<br><br>
+  <img class="mySlides" src="Images\A1.jpg" style="width:180%; height:450px">
+  <img class="mySlides" src="Images\A2.JPG" style="width:180%; height:450px">
+  <img class="mySlides" src="Images\A3.JPG" style="width:180%; height:450px">
+  <img class="mySlides" src="Images\A4.JPG" style="width:180%; height:450px">
+  <img class="mySlides" src="Images\A5.gif" style="width:180%; height:450px">
+  <img class="mySlides" src="Images\A6.JPG" style="width:180%; height:450px">
+  <img class="mySlides" src="Images\A7.JPG" style="width:180%; height:450px">
+  <img class="mySlides" src="Images\A8.JPG" style="width:180%; height:450px">
+  <img class="mySlides" src="Images\A9.JPG" style="width:180%; height:450px">
+  <img class="mySlides" src="Images\A10.JPG" style="width:180%; height:450px">
+  
+</div>-->
+
+<script>
+
+<!--automatic slide-->
+
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+
+</script>
+
+
+
+
+
+
+
+
+</div> <!-- /.section-title -->
+			</div>		<!-- /.col-md-12 -->
+	  </div> <!-- /.row -->	 
+</div> <!-- /#patron -->
+
+
+
+
+
+
+
+
+
+
+<div id="DT" class="section-content">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="section-title">
+							<h2>Design Team</h2>
+		<br><br>
+<iframe style="border:0px dashed red;"  src="DT/A.html" width="100%" height="450px;" frameborder="0" scrolling="no" ></iframe>
+
+
+		
+</div> <!-- /.section-title -->
+			</div>		<!-- /.col-md-12 -->
+	  </div> <!-- /.row -->	 	 
+			 
+</div> <!-- /#patron -->
+
+
+
+
+			<div id="contact" class="section-content">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="section-title">
+							<h2>Find  Us</h2>
+						</div> <!-- /.section-title -->
+					</div> <!-- /.col-md-12 -->
+				</div> <!-- /.row -->
+				<div class="row">
+					<div class="col-md-12">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4571.735731558761!2d80.63472390174424!3d16.74887868403887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0xc4db6558eaad2724!2sLakkireddy+Bali+Reddy+College+of+Engineering!5e1!3m2!1sen!2sin!4v1440993742087" width="100%" height="350px" frameborder="0" style="border:1px dashed red;" allowfullscreen></iframe>	
+<p class="b"><font color="red">Phone number</font>:08659 - 222933 , 222934, 223936, 223937,7386349999, 9949117411</p>
+<p class="b"><font color="red">Email id</font>:lbcemym@lbrce.ac.in</p>
+				</div> <!-- /.col-md-12 -->
+				</div> <!-- /.row -->
+			<div class="row contact-form">
+					
+
+		</div> <!-- /.container-fluid -->
+
+<div align="right" >
+<!--Visitor count code-->
+<p><span style="color:red">Visitor Count</span> :<a href='http://www.freevisitorcounters.com'>Counters</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=d40f84be69654d392e5b7746a4ddd1ec7da67bea'></script>
+<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/449665/t/5"></script></p>
+</div>
+
+
+
+				<div class="bottom-footer">
+				<div class="container-fluid">
+					<div class="row">
+
+						<div class="col-md-6">
+
+							<p class="copyright">Copyright &#169; 2018 <a href="#">Lakshya 2K18</a>
+                            </p>
+						</div> <!-- /.col-md-6 -->
+						<div class="col-md-6 credits">
+							<p><!-- Design: <a href="http://www.templatemo.com">templatemo</a> --></p>
+						</div> <!-- /.col-md-6 -->
+					</div> <!-- /.row -->
+				</div> <!-- /.container-fluid -->
+			</div> <!-- /.bottom-footer -->
+		</div> <!-- /.site-footer -->  
+
+	</div> <!-- /#main-content -->   
+
+	<!-- JavaScripts -->
+	<script src="JS/jquery-1.10.2.min.js"></script>
+	<script src="JS/jquery.singlePageNav.js"></script>
+	<script src="JS/jquery.flexslider.js"></script>
+	<script src="JS/jquery.prettyPhoto.js"></script>
+	<script src="JS/custom.js"></script>
+
+</body>
+</html><!--®Ïb´•
+è—5ùNƒ±t–÷»–˘"PÕ$ﬂgŸ}"BÖÑüïÄó/:†p¡∑ÑHƒ≤ b!(ª∫y[•°âÍdP ù∫ú«(ÏöS%`¸yvîÂ[ükE¶ÈÛı nÃ¿∏=•!IS∞eb¥Ö*EÊ·ó-´&ÔaQ(≤™lˆ
+Ô¥9⁄!™˜∏øYœ„R˜…`ï£a§û∂ﬁ¯)ÇF}ï©Ù$dPj
+≥ÀW“hÙbã'Y Iµ>]‰f„‰Êxú·.i:•º≠LÂya(hT§T/
+Zó€bÛl{˘® ©´((6#Ô ¯‹î 0ùíΩ◊–°+«tX{î
+äy=5Í«o∫O∆E‹ÿg∂
+p}a©bÂ|!√ôi¸Tº∑z˙J[°/[I∏Öëﬂå∫ù˚A‡W9{4ŸYdÌÆ |∆s 8ÜkH.-Ãˆ/Ú˛ìeUà1Â
+€á$¬!ﬁ?3˚e47n˚J6üÛ·F|ÿ∑Z«†ÅtÏî†û93—ÛÇ•}+h-i'ê∞Y•Ÿ#:HÓÙ&b¢nyª<€–⁄œO°ÈÏ‰IÙ∆º˛HﬂSu>õ«—R ˙«—«—
+«—π$L–j*U
+Ü—«—-->

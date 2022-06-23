@@ -1,0 +1,21 @@
+.B
+{
+width: auto;
+height:40px;
+background:skyblue;
+color: black;
+font-size: 30px;
+font-style: inherit;
+margin-left: 25px;
+margin-right: 35px;
+margin-bottom: 20px;
+}
+.B:hover
+{
+width: auto;
+height:40px;
+background:black;
+color: white;
+font-size: 25px;
+font-style: inherit;
+}

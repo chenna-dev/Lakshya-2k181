@@ -1,0 +1,92 @@
+td#td1 span#a {
+display:inline;
+}
+td#td1:hover span#a {
+display:none;
+}
+td#td1 span#b {
+display:none;
+}
+td#td1:hover span#b {
+display:inline;
+}
+td#td2 span#c {
+display:inline;
+}
+td#td2:hover span#c {
+display:none;
+}
+td#td2 span#d {
+display:none;
+}
+td#td2:hover span#d {
+display:inline;
+}
+td#td3 span#e {
+display:inline;
+}
+td#td3:hover span#e {
+display:none;
+}
+td#td3 span#f {
+display:none;
+}
+td#td3:hover span#f {
+display:inline;
+}
+td#td4 span#g {
+display:inline;
+}
+td#td4:hover span#g {
+display:none;
+}
+td#td4 span#h {
+display:none;
+}
+td#td4:hover span#h {
+display:inline;
+}
+td#td5 span#i {
+display:inline;
+}
+td#td5:hover span#i {
+display:none;
+}
+td#td5 span#j {
+display:none;
+}
+td#td5:hover span#j {
+display:inline;
+}
+.P
+{
+font-family:Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	font-size: 70px;
+	text-align:center;
+	background-color: rgba(216, 0, 255, 0.03);
+	color: #FFFFFF;
+}
+.P1
+{
+font-family:Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	font-size: 50px;
+	text-align:center;
+	background-color: rgba(216, 0, 255, 0.03);
+	color: #FFFFFF;   
+}
+#T {
+  border-collapse: separate;
+  border-spacing: 30px 0;
+}
+.LBTD
+ {
+  padding: 5px 0;
+}
+.P2
+{
+font-family:Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	font-size: 25px;
+	text-align:center;
+	background-color: rgba(216, 0, 255, 0.03);
+	color: #FFFFFF;   
+}

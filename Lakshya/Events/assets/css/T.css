@@ -1,0 +1,23 @@
+th
+{
+font-size:18px;
+font-style:inherit;
+	text-align: center;
+border-left: 1px solid red;
+border-right:2px solid red; 
+border-top: 2px solid red;
+border-bottom: 2px solid red;
+}
+td
+{
+
+font-size:18px;
+font-style:inherit;
+font-weight:20px;
+text-align: center;
+border-left: 1px solid red;
+border-right:2px solid red; 
+border-top: 2px solid red;
+border-bottom: 2px solid red;
+
+}

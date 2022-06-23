@@ -1,0 +1,26 @@
+.box {
+font-family:Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	font-size: 150px;
+	text-align:center;
+	background-color: rgba(216, 0, 255, 0.03);
+	color: #FFFFFF;	
+ 	margin-left:auto;
+	margin-right:auto;
+ height: 80px; 
+  width: 80px;
+ line-height: 80px;
+  text-align: center;
+  transition-property: background;
+  transition-duration: .6s, 8s;
+  transition-timing-function: linear, ease-in;
+   background: #D800FF;
+  border-radius: 60%;
+}
+.box:hover {
+  background: #2db34a;
+  border-radius: 15px;
+  cursor: pointer;
+  height: 80px; 
+  width: 120px;
+
+}

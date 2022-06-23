@@ -1,0 +1,80 @@
+#circle 
+{
+    background: #383E41;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+margin-left:auto;
+margin-right:auto;
+}
+#circle1 {
+	background:url(../Images/Circle/After/logo.jpg);
+	background-position: center;
+	width: 350px;
+    height: 350px;
+    border-radius: 50%;
+margin-left:auto;
+margin-right:auto;
+position: relative;
+top:125px;
+}
+#C{
+	position:related;
+	left:240px;
+	top:-350px;
+}
+#C1{
+	position:related;
+	left:100px;
+	top:-432px;
+	}
+
+#C2{
+	position:relative;
+	left:15px;
+	top:-440px;
+}
+
+#C3{
+	position:relative;
+	left:10px;
+	top:-420px;
+}
+#C4{
+	position:relative;
+	left:90px;
+	top:-430px;
+}
+#C5{
+	position:relative;
+	left:240px;
+	top:-500px;
+}
+#C6{
+	position:relative;
+	left:390px;
+	top:-680px;
+}
+#C7{
+	position:relative;
+	left:468px;
+	top:-930px;
+}
+
+#C8{
+	position:relative;
+	left:460px;
+	top:-1200px;
+}
+
+#C9{
+	position:relative;
+	left:380px;
+	top:-1430px;
+}
+
+table
+{
+	margin-left:auto;
+	margin-right:auto;
+}

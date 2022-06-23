@@ -1,0 +1,67 @@
+	body{
+
+		width:98%;
+		height:auto;
+margin:7px 8px 0px;
+		background-image: url(Images/BI/a.jpg);
+		background-repeat: repeat-x repeat-y;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		overflow-y: hidden;
+	}
+#All
+{
+width: 1000px;
+
+//width: 1000px;
+height: 600px;
+margin-right: auto;
+margin-left: auto;
+margin-top:-200px;
+float:none;
+}
+#Menu
+{
+width:1000px;
+//height: 200px;
+height:110px;
+margin-right: auto;
+margin-left: auto;
+
+}
+#Menuin
+{
+width:1000px;
+height: 150px;
+margin-right: auto;
+margin-left: auto;
+margin-top: 40px;
+
+
+}
+#Center
+{
+margin-right: auto;
+margin-left: auto;
+width: 1000px;
+height: 200px;
+margin-top: -40px;
+}
+#Fotter
+{
+margin-right: auto;
+margin-left: auto;
+width: 1000px;
+height:100px;
+margin-top:72px;
+//height: 200px;
+}
+.P1
+{
+	color:white;
+	 font-family:Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+  font-size: 25px;
+  text-align:center;
+}
